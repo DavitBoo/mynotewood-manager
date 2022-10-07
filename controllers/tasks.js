@@ -1,10 +1,12 @@
-
+const Task = require('../models/Task')
 const getAllTasks = (req, res) => {
     res.send('all items from the file')
 }
 
-const createTask = (req, res) => {
-    res.json(req.body); 
+//se podría hacer con los callbacks como he hecho hasta ahora, pero para cambiar y aprender voy a usar Async Await
+const createTask = async (req, res) => {
+    const task = await Task.create(req.body)
+    res.status(201).json({task}); 
 }
 
 const getTask = (req, res) => {
