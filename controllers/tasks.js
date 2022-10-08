@@ -5,8 +5,12 @@ const getAllTasks = (req, res) => {
 
 //se podría hacer con los callbacks como he hecho hasta ahora, pero para cambiar y aprender voy a usar Async Await
 const createTask = async (req, res) => {
-    const task = await Task.create(req.body)
-    res.status(201).json({task}); 
+    try{
+        const task = await Task.create(req.body)
+        res.status(201).json({task}); 
+    } catch(error){
+        res.status(500).json({msg:error})
+    }
 }
 
 const getTask = (req, res) => {
