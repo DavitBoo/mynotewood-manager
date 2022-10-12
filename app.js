@@ -3,17 +3,17 @@ const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
 require('dotenv').config()
+const notFound = require('./middleware/not-found')
 
 //middleware
+app.use(express.static('./public'))
 //I do not need to install bodyparse anymore, with express.json(), it does the same in the latests versions
 app.use(express.json());
 
-//routes
-app.get('/hello', (req, res) => {
-    res.send('My Apps')
-})
 
 app.use('/api/v1/tasks', tasks)
+
+app.use(notFound)
 
 
 const start =  async () =>{
