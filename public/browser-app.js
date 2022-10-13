@@ -3,6 +3,13 @@ const loadingDOM = document.querySelector('.loading-text')
 const formDOM = document.querySelector('.task-form')
 const taskInputDOM = document.querySelector('.task-input')
 const bookTypeSelectorDOM = document.querySelector('.book-type-selector')
+const woodTypeSelectorDOM = document.querySelector('.wood-type-selector')
+const taskMeasuresDOM = document.querySelector('.task-measures')
+const taskPagesDOM = document.querySelector('.task-pages')
+const taskThicknessDOM = document.querySelector('.task-thickness')
+const wayMadeSelectorDOM = document.querySelector('.way-made-selector')
+const taskSideTypeDOM = document.querySelector('.task-side-type')
+const taskThreatDOM = document.querySelector('.task-threat')
 const formAlertDOM = document.querySelector('.form-alert')
 // Load tasks from /api/tasks
 const showTasks = async () => {
@@ -18,7 +25,18 @@ const showTasks = async () => {
     }
     const allTasks = tasks
       .map((task) => {
-        const { completed, _id: taskID, name, bookType } = task
+        const { 
+          completed, 
+          _id: taskID, 
+          name, 
+          bookType, 
+          woodType,
+          measures,
+          pages,
+          thickness,
+          wayMade,
+          sideType,
+          threat } = task
         return `<div class="single-task ${completed && 'task-completed'}">
 <h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
 <h6>${bookType}</h6>
@@ -73,10 +91,28 @@ formDOM.addEventListener('submit', async (e) => {
   const bookType = bookTypeSelectorDOM.value
 
   try {
-    await axios.post('/api/v1/tasks', { name, bookType })
+    await axios.post('/api/v1/tasks', { 
+      name, 
+      bookType,
+      woodType,
+      measures,
+      pages,
+      thickness,
+      wayMade,
+      sideType,
+      threat
+     })
     showTasks()
     taskInputDOM.value = ''
     bookTypeSelectorDOM.value = ""
+    bookTypeSelectorDOM.value = ""
+    wookTypeSelectorDOM.value = ""
+    taskMeasuresDOM.value = ""
+    taskPagesDOM.value = ""
+    taskThicknessDOM.value = ""
+    wayMadeSelectorDOM.value = ""
+    taskSideTypeDOM.value = ""
+    taskThreatDOM.value = ""
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `success, task added`
     formAlertDOM.classList.add('text-success')
