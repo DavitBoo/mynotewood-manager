@@ -27,11 +27,60 @@
           class="task-input"
           placeholder="ej: cuaderno de zebrano"
         />
+      </div>
+      <div class="form-control">
         <select name="book-type" class="book-type-selector">
           <option value="" disabled selected>Album o cuaderno</option>
           <option value="album">Album</option>
           <option value="cuaderno">Cuaderno</option>
         </select>
+        <select name="wood-type" class="wood-type-selector">
+          <option value="" disabled selected>Madera utilizada</option>
+          <option value="roble">Roble</option>
+          <option value="zebrano">Zebrano</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <input 
+          type="text"
+          name="measures"
+          class="task-measures"
+          placeholder="Medidas"
+        >
+        <input 
+          type="number"
+          name="pages"
+          class="task-pages"
+          placeholder="Número de páginas"
+        >
+      </div>
+      <div class="form-control">
+        <input 
+          type="text"
+          name="thickness"
+          class="task-thickness"
+          placeholder="Grosor de hojas"
+        >
+        <select name="way-made" class="way-made-selector">
+          <option value="" disabled selected>Manera de grabado</option>
+          <option value="pirograbado">Pirograbador (A mano)</option>
+          <option value="laser">Láser</option>
+        </select>
+      </div>
+      
+      <div class="form-control">
+        <input 
+          type="text"
+          name="side-type"
+          class="task-side-type"
+          placeholder="Estilo del lomo"
+        >
+        <input 
+          type="text"
+          name="threat-colour"
+          class="task-threat"
+          placeholder="Color del hilo"
+        >
       </div>
       <button type="submit" class="btn submit-btn">guardar</button>
       <div class="form-alert"></div>

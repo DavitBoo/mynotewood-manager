@@ -1,5 +1,6 @@
 const taskIDDOM = document.querySelector('.task-edit-id')
 const taskNameDOM = document.querySelector('.task-edit-name')
+const bookTypeDom = document.querySelector('.task-edit-book-type-selector')
 const taskCompletedDOM = document.querySelector('.task-edit-completed')
 const editFormDOM = document.querySelector('.single-task-form')
 const editBtnDOM = document.querySelector('.task-edit-btn')
@@ -13,10 +14,11 @@ const showTask = async () => {
     const {
       data: { task },
     } = await axios.get(`/api/v1/tasks/${id}`)
-    const { _id: taskID, completed, name } = task
+    const { _id: taskID, completed, name, bookType } = task
 
     taskIDDOM.textContent = taskID
     taskNameDOM.value = name
+    bookTypeDom.value = bookType
     tempName = name
     if (completed) {
       taskCompletedDOM.checked = true
@@ -33,19 +35,22 @@ editFormDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   try {
     const taskName = taskNameDOM.value
+    const taskBookType = bookTypeDom.value
     const taskCompleted = taskCompletedDOM.checked
 
     const {
       data: { task },
     } = await axios.patch(`/api/v1/tasks/${id}`, {
       name: taskName,
+      bookType: taskBookType,
       completed: taskCompleted,
     })
 
-    const { _id: taskID, completed, name } = task
+    const { _id: taskID, completed, name, bookType } = task
 
     taskIDDOM.textContent = taskID
     taskNameDOM.value = name
+    bookTypeDom.value = bookType
     tempName = name
     if (completed) {
       taskCompletedDOM.checked = true
