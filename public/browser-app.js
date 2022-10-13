@@ -89,6 +89,13 @@ formDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   const name = taskInputDOM.value
   const bookType = bookTypeSelectorDOM.value
+  const woodType = woodTypeSelectorDOM.value
+  const measures = taskMeasuresDOM.value
+  const pages = taskPagesDOM.value
+  const thickness = taskThicknessDOM.value
+  const wayMade = wayMadeSelectorDOM.value
+  const sideType = taskSideTypeDOM.value
+  const threat = taskThreatDOM.value
 
   try {
     await axios.post('/api/v1/tasks', { 
@@ -105,8 +112,7 @@ formDOM.addEventListener('submit', async (e) => {
     showTasks()
     taskInputDOM.value = ''
     bookTypeSelectorDOM.value = ""
-    bookTypeSelectorDOM.value = ""
-    wookTypeSelectorDOM.value = ""
+    woodTypeSelectorDOM.value = ""
     taskMeasuresDOM.value = ""
     taskPagesDOM.value = ""
     taskThicknessDOM.value = ""

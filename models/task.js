@@ -11,6 +11,27 @@ const TaskSchema = new mongoose.Schema({
     bookType:{
         type: String
     },
+    woodType: {
+        type: String
+    },
+    measures: {
+        type: String
+    },
+    pages: {
+        type: Number
+    },
+    thickness: {
+        type: String
+    },
+    wayMade: {
+        type: String
+    },
+    sideType: {
+        type: String
+    },
+    threat: {
+        type: String
+    },
     completed: {
         type: Boolean,
         default: false
