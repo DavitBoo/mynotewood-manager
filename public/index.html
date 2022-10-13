@@ -27,8 +27,13 @@
           class="task-input"
           placeholder="ej: cuaderno de zebrano"
         />
-        <button type="submit" class="btn submit-btn">guardar</button>
+        <select name="book-type" class="book-type-selector">
+          <option value="" disabled selected>Album o cuaderno</option>
+          <option value="album">Album</option>
+          <option value="cuaderno">Cuaderno</option>
+        </select>
       </div>
+      <button type="submit" class="btn submit-btn">guardar</button>
       <div class="form-alert"></div>
     </form>
     <section class="tasks-container">
