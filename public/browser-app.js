@@ -11,6 +11,7 @@ const wayMadeSelectorDOM = document.querySelector('.way-made-selector')
 const taskSideTypeDOM = document.querySelector('.task-side-type')
 const taskThreatDOM = document.querySelector('.task-threat')
 const formAlertDOM = document.querySelector('.form-alert')
+
 // Load tasks from /api/tasks
 const showTasks = async () => {
   loadingDOM.style.visibility = 'visible'
@@ -40,6 +41,13 @@ const showTasks = async () => {
         return `<div class="single-task ${completed && 'task-completed'}">
 <h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
 <h6>${bookType}</h6>
+<h6>${woodType}</h6>
+<h6>${measures}</h6>
+<h6>${pages}</h6>
+<h6>${thickness}</h6>
+<h6>${wayMade}</h6>
+<h6>${sideType}</h6>
+<h6>${threat}</h6>
 <div class="task-links">
 
 
