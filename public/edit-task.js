@@ -6,6 +6,7 @@ const taskMeasuresDOM = document.querySelector('.task-measures-edit')
 const taskPagesDOM = document.querySelector('.task-pages-edit')
 const taskThicknessDOM = document.querySelector('.task-thickness-edit')
 const wayMadeSelectorDOM = document.querySelector('.way-made-selector-edit')
+const wayMadeDescriptionDOM = document.querySelector('.way-made-description-edit')
 const taskSideTypeDOM = document.querySelector('.task-side-type-edit')
 const taskThreatDOM = document.querySelector('.task-threat-edit')
 const taskCompletedDOM = document.querySelector('.task-edit-completed')
@@ -31,6 +32,7 @@ const showTask = async () => {
       pages,
       thickness,
       wayMade,
+      wayMadeDescription,
       sideType,
       threat 
     } = task
@@ -43,6 +45,7 @@ const showTask = async () => {
     taskPagesDOM.value = pages
     taskThicknessDOM.value = thickness
     wayMadeSelectorDOM.value = wayMade
+    wayMadeDescriptionDOM.value = wayMadeDescription
     taskSideTypeDOM.value = sideType
     taskThreatDOM.value = threat
     tempName = name
@@ -67,6 +70,7 @@ editFormDOM.addEventListener('submit', async (e) => {
     const taskPages = taskPagesDOM.value
     const taskThickness = taskThicknessDOM.value
     const taskWayMade = wayMadeSelectorDOM.value
+    const taskWayMadeDescription = wayMadeDescriptionDOM.value
     const taskSideType = taskSideTypeDOM.value
     const taskThreat = taskThreatDOM.value
     const taskCompleted = taskCompletedDOM.checked
@@ -81,6 +85,7 @@ editFormDOM.addEventListener('submit', async (e) => {
       pages: taskPages,
       thickness: taskThickness,
       wayMade: taskWayMade,
+      wayMadeDescription: wayMadeDescriptionDOM,
       sideType: taskSideType,
       threat: taskThreat,
       completed: taskCompleted,
@@ -96,6 +101,7 @@ editFormDOM.addEventListener('submit', async (e) => {
       pages,
       thickness,
       wayMade,
+      wayMadeDescription,
       sideType,
       threat 
     } = task
@@ -108,6 +114,7 @@ editFormDOM.addEventListener('submit', async (e) => {
     taskPagesDOM.value = pages
     taskThicknessDOM.value = thickness
     wayMadeSelectorDOM.value = wayMade
+    wayMadeDescriptionDOM.value = wayMadeDescription
     taskSideTypeDOM.value = sideType
     taskThreatDOM.value = threat
     tempName = name

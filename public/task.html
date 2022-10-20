@@ -35,6 +35,7 @@
         <div class="form-control">
           <label for="">Madera Utilizada</label>
           <select name="wood-type" class="wood-type-selector-edit">
+            <option value="bubinga">Bubinga</option>
             <option value="roble">Roble</option>
             <option value="zebrano">Zebrano</option>
           </select>
@@ -70,9 +71,20 @@
           <label for="">Manera de grabado</label>
           <select name="way-made" class="way-made-selector-edit">
             <option value="" disabled selected>Manera de grabado</option>
+            <option value="false">No lleva grabado</option>
             <option value="pirograbado">Pirograbador (A mano)</option>
             <option value="laser">Láser</option>
+            <option value="pintura">Pintura</option>
           </select>
+        </div>
+        <div class="form-control">
+          <label for="">Descripción del grabado</label>
+          <input 
+          type="text"
+          name="way-made-description"
+          class="way-made-description-edit"
+          placeholder="Descripción del grabado"
+        >
         </div>
         <div class="form-control">
           <label for="">Estilo del lomo</label>

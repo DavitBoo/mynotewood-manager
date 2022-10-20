@@ -26,6 +26,9 @@ const TaskSchema = new mongoose.Schema({
     wayMade: {
         type: String
     },
+    wayMadeDescription: {
+        type: String
+    },
     sideType: {
         type: String
     },
@@ -36,6 +39,11 @@ const TaskSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    createAt: {
+        type: Date,
+        default:Date.now()
+    
+    }
 })
 
 module.exports = mongoose.model('Task', TaskSchema)

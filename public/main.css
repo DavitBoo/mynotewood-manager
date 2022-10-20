@@ -463,3 +463,13 @@ footer{
 footer p{
   text-align: center;
 }
+
+
+
+/*************
+   CONDITIONAL HIDDING
+*************/
+
+.hide{
+  display: none;
+}

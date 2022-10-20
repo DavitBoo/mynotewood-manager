@@ -36,6 +36,7 @@
         </select>
         <select name="wood-type" class="wood-type-selector">
           <option value="" disabled selected>Madera utilizada</option>
+          <option value="bubinga">Bubinga</option>
           <option value="roble">Roble</option>
           <option value="zebrano">Zebrano</option>
         </select>
@@ -61,11 +62,23 @@
           class="task-thickness"
           placeholder="Grosor de hojas"
         >
+      </div>
+      <div class="form-control">
+
         <select name="way-made" class="way-made-selector">
-          <option value="" disabled selected>Manera de grabado</option>
+          <option value="false" disabled selected>Manera de grabado</option>
+          <option value="false">No lleva grabado</option>
           <option value="pirograbado">Pirograbador (A mano)</option>
           <option value="laser">Láser</option>
+          <option value="pintura">Pintura</option>
         </select>
+
+        <input 
+          type="text"
+          name="way-made-description"
+          class="task-way-made-description"
+          placeholder="Descripción del grabado"
+        >
       </div>
       
       <div class="form-control">
@@ -75,6 +88,8 @@
           class="task-side-type"
           placeholder="Estilo del lomo"
         >
+      </div>
+      <div class="form-control">
         <input 
           type="text"
           name="threat-colour"

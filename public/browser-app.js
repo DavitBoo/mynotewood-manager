@@ -8,9 +8,12 @@ const taskMeasuresDOM = document.querySelector('.task-measures')
 const taskPagesDOM = document.querySelector('.task-pages')
 const taskThicknessDOM = document.querySelector('.task-thickness')
 const wayMadeSelectorDOM = document.querySelector('.way-made-selector')
+const taskWayMadeDescriptionDOM = document.querySelector('.task-way-made-description')
 const taskSideTypeDOM = document.querySelector('.task-side-type')
 const taskThreatDOM = document.querySelector('.task-threat')
 const formAlertDOM = document.querySelector('.form-alert')
+
+taskWayMadeDescriptionDOM.classList.add("hide");
 
 // Load tasks from /api/tasks
 const showTasks = async () => {
@@ -36,6 +39,7 @@ const showTasks = async () => {
           pages,
           thickness,
           wayMade,
+          wayMadeDescription,
           sideType,
           threat } = task
         return `<div class="single-task ${completed && 'task-completed'}">
@@ -46,6 +50,7 @@ const showTasks = async () => {
 <h6>${pages}</h6>
 <h6>${thickness}</h6>
 <h6>${wayMade}</h6>
+<h6>${wayMadeDescription}</h6>
 <h6>${sideType}</h6>
 <h6>${threat}</h6>
 <div class="task-links">
@@ -102,6 +107,7 @@ formDOM.addEventListener('submit', async (e) => {
   const pages = taskPagesDOM.value
   const thickness = taskThicknessDOM.value
   const wayMade = wayMadeSelectorDOM.value
+  const wayMadeDescription = taskWayMadeDescriptionDOM.value
   const sideType = taskSideTypeDOM.value
   const threat = taskThreatDOM.value
 
@@ -114,6 +120,7 @@ formDOM.addEventListener('submit', async (e) => {
       pages,
       thickness,
       wayMade,
+      wayMadeDescription,
       sideType,
       threat
      })
@@ -125,6 +132,7 @@ formDOM.addEventListener('submit', async (e) => {
     taskPagesDOM.value = ""
     taskThicknessDOM.value = ""
     wayMadeSelectorDOM.value = ""
+    taskWayMadeDescriptionDOM.value = ""
     taskSideTypeDOM.value = ""
     taskThreatDOM.value = ""
     formAlertDOM.style.display = 'block'
@@ -138,4 +146,13 @@ formDOM.addEventListener('submit', async (e) => {
     formAlertDOM.style.display = 'none'
     formAlertDOM.classList.remove('text-success')
   }, 3000)
+})
+
+
+wayMadeSelectorDOM.addEventListener('change', () => {
+  if(wayMadeSelectorDOM.value === "false"){
+    taskWayMadeDescriptionDOM.classList.add("hide");
+  }else{
+    taskWayMadeDescriptionDOM.classList.remove("hide");
+  }
 })
