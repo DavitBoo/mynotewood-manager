@@ -351,6 +351,7 @@ form > :last-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 .single-task:hover {
   box-shadow: var(--shadow-4);
@@ -369,6 +370,19 @@ form > :last-child {
   font-size: 1rem;
   color: var(--green-dark);
   visibility: hidden;
+}
+.task-attributes-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+.task-attributes-col{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
 }
 .task-completed h5 {
   text-decoration: line-through;

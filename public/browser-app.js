@@ -43,20 +43,8 @@ const showTasks = async () => {
           sideType,
           threat } = task
         return `<div class="single-task ${completed && 'task-completed'}">
-<h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
-<h6>${bookType}</h6>
-<h6>${woodType}</h6>
-<h6>${measures}</h6>
-<h6>${pages}</h6>
-<h6>${thickness}</h6>
-<h6>${wayMade}</h6>
-<h6>${wayMadeDescription}</h6>
-<h6>${sideType}</h6>
-<h6>${threat}</h6>
+<div><h5><span><i class="far fa-check-circle"></i></span>${name}</h5></div>
 <div class="task-links">
-
-
-
 <!-- edit link -->
 <a href="task.html?id=${taskID}"  class="edit-link">
 <i class="fas fa-edit"></i>
@@ -66,6 +54,22 @@ const showTasks = async () => {
 <i class="fas fa-trash"></i>
 </button>
 </div>
+<div class="task-attributes-row">
+  <div class="task-attributes-col"><h6>${bookType}</h6></div>
+  <div class="task-attributes-col"><h6>Tipo de Madera: ${woodType}</h6></div>
+  <div class="task-attributes-col"><h6>Tamaño: ${measures}</h6></div>
+</div>
+<div class="task-attributes-row">
+  <div class="task-attributes-col"><h6>Número de páginas: ${pages}</h6></div>
+  <div class="task-attributes-col"><h6>Grsor: ${thickness}</h6></div>
+  <div class="task-attributes-col"><h6>${wayMade}</h6></div>
+</div>
+<div class="task-attributes-row">
+  <div class="task-attributes-col"><h6>${wayMadeDescription}</h6></div>
+  <div class="task-attributes-col"><h6>${sideType}</h6></div>
+  <div class="task-attributes-col"><h6>${threat}</h6></div>
+</div>
+
 </div>`
       })
       .join('')

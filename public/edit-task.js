@@ -85,7 +85,7 @@ editFormDOM.addEventListener('submit', async (e) => {
       pages: taskPages,
       thickness: taskThickness,
       wayMade: taskWayMade,
-      wayMadeDescription: wayMadeDescriptionDOM,
+      wayMadeDescription: taskWayMadeDescription,
       sideType: taskSideType,
       threat: taskThreat,
       completed: taskCompleted,
