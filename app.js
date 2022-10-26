@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const session = require('express-session')
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
 require('dotenv').config()
 const notFound = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
+
+
 
 //middleware
 app.use(express.static('./public'))
@@ -20,7 +24,7 @@ const port = process.env.PORT || 3000
 
 const start =  async () =>{
     try {
-      await connectDB(process.env.MONGO_URI)    //we are using process.env in order to access the .env file -it is a global variable-
+      await mongoose.connect(process.env.MONGO_URI)    //we are using process.env in order to access the .env file -it is a global variable-
         app.listen(port, console.log(`server is listening in port 3000 ....`));
     } catch (error) {
         console.log(error)
