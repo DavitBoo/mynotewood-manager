@@ -74,6 +74,7 @@ app.post("/register", (req, res) => {
 
 
 app.post("/login", (req, res) => {
+  console.log(req.body)
   User.findOne({ email: req.body.email })
     .then((user) => {
       bcrypt.compare(req.body.password, user.password)
