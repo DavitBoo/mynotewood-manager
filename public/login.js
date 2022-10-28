@@ -13,9 +13,12 @@ loginForm.addEventListener('submit', async (e) => {
         password
        })
        modal.style.display = "none";
+        formAlertDOM.style.display = 'block'
+        formAlertDOM.innerHTML = `you are now logged`
+        formAlertDOM.classList.add('text-success')
     } catch (error) {
-      formAlertDOM.style.display = 'block'
-      formAlertDOM.innerHTML = `error, please try again`
+        formAlertDOM.style.display = 'block'
+        formAlertDOM.innerHTML = `error, please try again`
     }
     setTimeout(() => {
       formAlertDOM.style.display = 'none'
