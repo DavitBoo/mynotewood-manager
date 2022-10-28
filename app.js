@@ -1,9 +1,10 @@
-//no soy capaz de leer el req.body 27/10/2022 en la peticion POST dentro de app.js
+//  ##  If I am using postman, be careful with the option: body > json <<== use this one
 
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 //const session = require('express-session')
 const tasks = require('./routes/tasks');
 const User = require("./models/user");
@@ -69,6 +70,55 @@ app.post("/register", (req, res) => {
           })
 });
 
+
+app.post("/login", (req, res) => {
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      bcrypt.compare(req.body.password, user.password)
+        .then((passwordCheck) => {
+
+          // check if password matches
+          if(!passwordCheck) {
+            return res.status(400).send({
+              message: "Passwords does not match",
+              error,
+            });
+          }
+          //   create JWT token
+          const token = jwt.sign(
+            {
+              userId: user._id,
+              userEmail: user.email,
+            },
+            "RANDOM-TOKEN",
+            { expiresIn: "24h" }
+          );
+          console.log(token)
+           //   return success response
+            res.status(200).send({
+              message: "Login Successful",
+              email: user.email,
+              token,
+            });
+        })
+
+        
+
+        .catch((error) => {
+          response.status(400).send({
+            message: "Passwords does not match",
+            error,
+          });
+        })
+    })
+    .catch((e) => {
+      res.status(404).send({
+        message: "Email not found",
+        e,
+      });
+    });
+})
+
 app.use(notFound)
 app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 3000
@@ -83,5 +133,15 @@ const start =  async () =>{
         console.log(error)
     }
 }
+
+// free endpoint
+app.get("/free-endpoint", (req, res) => {
+  res.json({ message: "You are free to access me anytime" });
+});
+
+// authentication endpoint
+app.get("/auth-endpoint", (req, res) => {
+  res.json({ message: "You are authorized to access me" });
+});
 
 start();
