@@ -1,10 +1,12 @@
 //  ##  If I am using postman, be careful with the option: body > json <<== use this one
 
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const auth = require("./auth");
 //const session = require('express-session')
 const tasks = require('./routes/tasks');
 const User = require("./models/user");
@@ -105,7 +107,7 @@ app.post("/login", (req, res) => {
         
 
         .catch((error) => {
-          response.status(400).send({
+          res.status(400).send({
             message: "Passwords does not match",
             error,
           });
@@ -118,6 +120,32 @@ app.post("/login", (req, res) => {
       });
     });
 })
+
+
+// free endpoint
+app.get("/free-endpoint", (req, res) => {
+  res.json({ message: "You are free to access me anytime" });
+});
+
+// authentication endpoint
+app.get("/auth-endpoint", auth, (req, res) => {
+  res.json({ message: "You are authorized to access me" });
+});
+
+
+// Curb Cores Error by adding a header here
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
 
 app.use(notFound)
 app.use(errorHandlerMiddleware);
@@ -134,14 +162,6 @@ const start =  async () =>{
     }
 }
 
-// free endpoint
-app.get("/free-endpoint", (req, res) => {
-  res.json({ message: "You are free to access me anytime" });
-});
 
-// authentication endpoint
-app.get("/auth-endpoint", (req, res) => {
-  res.json({ message: "You are authorized to access me" });
-});
 
 start();
