@@ -1,6 +1,3 @@
-// import Cookies from "universal-cookie";
-// const cookies = new Cookies();
-
 const loginForm = document.getElementById("login-form");
 const emailInput = document.querySelector('.email-input')
 const passwordInput = document.querySelector('.password-input')
@@ -15,7 +12,7 @@ loginForm.addEventListener('submit', async (e) => {
         email, 
         password
        }  
-    ).then(res => document.cookie = `token=${res.data.token}`)
+    ).then(res => document.cookie = `TOKEN=${res.data.token}`)
   
        modal.style.display = "none";
         formAlertDOM.style.display = 'block'
